@@ -1,0 +1,44 @@
+<%= form_with(model: @order, url: orders_path, method: :post) do |form| %>
+  <h1>New Order</h1>
+
+  <!-- Display errors if any -->
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Price -->
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, required: true %>
+  </div>
+
+  <!-- Quantity -->
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity, required: true %>
+  </div>
+
+  <!-- User ID -->
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, required: true %>
+  </div>
+
+  <!-- Order Type -->
+  <div class="field">
+    <%= form.label :order_type %>
+    <%= form.text_field :order_type, required: true %>
+  </div>
+
+  <!-- Submit button -->
+  <div class="actions">
+    <%= form.submit "Create Order" %>
+  </div>
+<% end %>
